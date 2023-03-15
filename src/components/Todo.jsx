@@ -9,11 +9,8 @@ export default function Todo({ done, text, id }) {
   const [update, setUpdate] = useState(false);
   const { deleteTodo, updateTodoText, completeTodo } = useContext(todoContext);
 
-  const handleUpdate = () => {
-    setUpdate(true);
-  };
   const handleSave = () => {
-    if (updatedText.trim() !== text) {
+    if (updatedText?.trim() !== text) {
       updateTodoText(id, updatedText);
     }
     setUpdate(false);
@@ -48,7 +45,7 @@ export default function Todo({ done, text, id }) {
           {!update && (
             <button
               className="block p-2 bg-green-100 rounded-full"
-              onClick={handleUpdate}
+              onClick={() => setUpdate(true)}
             >
               <img src={edit} alt="" className="w-5 h-5" />
             </button>

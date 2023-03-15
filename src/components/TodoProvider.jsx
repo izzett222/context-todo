@@ -8,23 +8,15 @@ export default function TodoProvider({ children }) {
     setTodos([{ text, id: nanoid(), done: false }, ...todos]);
   };
   const completeTodo = (id) => {
-    const newTodos = todos.map((el) => {
-      if (el.id === id) {
-        return { ...el, done: !el.done };
-      } else {
-        return { ...el };
-      }
-    });
+    const newTodos = todos.map((el) =>
+      el.id === id ? { ...el, done: !el.done } : { ...el }
+    );
     setTodos(newTodos);
   };
   const updateTodoText = (id, text) => {
-    const newTodos = todos.map((el) => {
-      if (el.id === id) {
-        return { ...el, text: text };
-      } else {
-        return { ...el };
-      }
-    });
+    const newTodos = todos.map((el) =>
+      el.id === id ? { ...el, text: text } : { ...el }
+    );
     setTodos(newTodos);
   };
   const deleteTodo = (id) => {
